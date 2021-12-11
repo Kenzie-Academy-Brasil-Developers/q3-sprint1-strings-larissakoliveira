@@ -26,10 +26,11 @@ print(titles)
 
 def standardize_text(text):
     separated_text = text.split('.')
+    print(separated_text)
     output = ''
     for index, sentence in enumerate(separated_text):
         if index < len(sentence):
-            output += (sentence[1:]).capitalize() + '. '
+            output += (sentence[:]).capitalize() + '.'
     return output
 
 text = """
