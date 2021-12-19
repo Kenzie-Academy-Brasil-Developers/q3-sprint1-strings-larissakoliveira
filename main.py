@@ -23,15 +23,13 @@ print(titles)
 
 ##########################################################################################################################################################################
 
-
 def standardize_text(text):
-    separated_text = text.split('.')
-    print(separated_text)
-    output = ''
-    for index, sentence in enumerate(separated_text):
-        if index < len(sentence):
-            output += (sentence[:]).capitalize() + '.'
-    return output
+    line_text = ' '.join(text.split())
+    separated_text = line_text.split('. ')
+    output = []
+    for sentence in separated_text:
+        output.append(sentence[0].upper() + sentence[1:])
+    return '. '.join(output)
 
 text = """
 a famosa atriz Constance Rattigan recebe uma encomenda
@@ -42,10 +40,17 @@ na lista estão assinalados em vermelho com uma cruz. O da
 própria Constance é um deles.
 """
 
+'''A famosa atriz Constance Rattigan recebe uma encomenda
+desagradável: uma lista com números de telefone de
+pessoas que morreram recentemente. É uma coisa assustadora,
+considerando que os nomes das poucas pessoas vivas presentes
+na lista estão assinalados em vermelho com uma cruz. O da
+própria Constance é um deles.'''
+
 normalized_text = standardize_text(text)
 print(normalized_text)
 
-##########################################################################################################################################################################
+#########################################################################################################################################################################
 
 def title_creator(text):
     return standardize_title(text).center(len(text) + 40, '-')
@@ -60,10 +65,19 @@ print(title)
 ##########################################################################################################################################################################
 
 def text_merge(text_a, text_b):
-    txt1 = standardize_text(text_a)
-    txt2 = standardize_text(text_b)[0].lower() + standardize_text(text_b)[1:]
-    output = txt1 + txt2    
-    return output 
+
+    text_a = text_a.split()
+    text_a[0] = text_a[0].capitalize()
+    text_a = " ".join(text_a)
+
+    text_b = text_b.split()
+    text_b[0] = text_b[0].lower()
+    text_b= " ".join(text_b)
+
+    if text_a[len(text_a)-1] == '.':
+        text_a = text_a[:-1]
+
+    return standardize_text(text_a + " " + text_b)
 
 text_of_blog_a = """
 na Londres do pós-guerra, a escritora     Juliet tenta encontrar
@@ -78,6 +92,16 @@ O romance "Cinco Quartos de Laranja" é como   um vinho intenso e
 delicado.    usando metáforas culinárias, personagens peculiares
  e acontecimentos sobrenaturais,      Harris cria uma história
 complexa e      bela ao mesmo tempo.
+
+
+'Na Londres do pós-guerra, a escritora Juliet tenta encontrar
+uma trama para seu novo livro. Ela recebe ajuda por meio de uma
+carta de um desconhecido, um nativo da ilha de Guernsey, em
+cujas mãos havia chegado um livro que há tempos tinha pertencido
+a Juliet o romance "Cinco Quartos de Laranja" é como um vinho
+intenso e delicado. Usando metáforas culinárias, personagens
+peculiares e acontecimentos sobrenaturais, Harris cria uma
+história complexa e bela ao mesmo tempo.'
 """
 
 merged_text = text_merge(text_of_blog_a, text_of_blog_b)
