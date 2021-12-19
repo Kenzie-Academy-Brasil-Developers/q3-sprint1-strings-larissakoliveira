@@ -92,16 +92,6 @@ O romance "Cinco Quartos de Laranja" é como   um vinho intenso e
 delicado.    usando metáforas culinárias, personagens peculiares
  e acontecimentos sobrenaturais,      Harris cria uma história
 complexa e      bela ao mesmo tempo.
-
-
-'Na Londres do pós-guerra, a escritora Juliet tenta encontrar
-uma trama para seu novo livro. Ela recebe ajuda por meio de uma
-carta de um desconhecido, um nativo da ilha de Guernsey, em
-cujas mãos havia chegado um livro que há tempos tinha pertencido
-a Juliet o romance "Cinco Quartos de Laranja" é como um vinho
-intenso e delicado. Usando metáforas culinárias, personagens
-peculiares e acontecimentos sobrenaturais, Harris cria uma
-história complexa e bela ao mesmo tempo.'
 """
 
 merged_text = text_merge(text_of_blog_a, text_of_blog_b)
