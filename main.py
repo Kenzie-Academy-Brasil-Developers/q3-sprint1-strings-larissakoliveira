@@ -40,12 +40,6 @@ na lista estão assinalados em vermelho com uma cruz. O da
 própria Constance é um deles.
 """
 
-'''A famosa atriz Constance Rattigan recebe uma encomenda
-desagradável: uma lista com números de telefone de
-pessoas que morreram recentemente. É uma coisa assustadora,
-considerando que os nomes das poucas pessoas vivas presentes
-na lista estão assinalados em vermelho com uma cruz. O da
-própria Constance é um deles.'''
 
 normalized_text = standardize_text(text)
 print(normalized_text)
@@ -64,20 +58,26 @@ print(title)
 
 ##########################################################################################################################################################################
 
-def text_merge(text_a, text_b):
+def text_merge(text_of_blog_a, text_of_blog_b):
+    text_of_blog_a = text_of_blog_a[0].upper() + text_of_blog_a[1:]
+    text_of_blog_b = text_of_blog_b[0].lower() + text_of_blog_b[1:]
 
-    text_a = text_a.split()
-    text_a[0] = text_a[0].capitalize()
-    text_a = " ".join(text_a)
+    if text_of_blog_a[len(text_of_blog_a) - 1] == ".":
+        text_of_blog_a = text_of_blog_a[:-1]
 
-    text_b = text_b.split()
-    text_b[0] = text_b[0].lower()
-    text_b= " ".join(text_b)
+    whole_text = text_of_blog_a + " " + text_of_blog_b
 
-    if text_a[len(text_a)-1] == '.':
-        text_a = text_a[:-1]
+    clean_text = " ".join(whole_text.split())
 
-    return standardize_text(text_a + " " + text_b)
+    lines = clean_text.split(". ")
+
+    final_text = ""
+  
+    for line in lines:
+            answer = line[0].capitalize() + line [1:] + ". "
+            final_text += answer
+        
+    return final_text[:-2]
 
 text_of_blog_a = """
 na Londres do pós-guerra, a escritora     Juliet tenta encontrar
